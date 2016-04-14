@@ -18,4 +18,11 @@ public class JUniverse {
             }
         }
     }
+
+    public HashMap<int[],JCell> getArroundCells(int[] coord){
+        HashMap<int[],JCell> around = new HashMap<>(8);
+
+    }
+
+    public HashMap<int[],JCell> getUniverseField(){return universeField;}
 }

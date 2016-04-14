@@ -5,6 +5,15 @@ package model;
  */
 public class JCell {
 
+
+    private int[] coord;
     private boolean isLive;
+
+    public JCell(int [] c){
+        coord = c;
+    }
+
+    public int getX(){return coord[0];}
+    public int getY(){return coord[1];}
 
 }

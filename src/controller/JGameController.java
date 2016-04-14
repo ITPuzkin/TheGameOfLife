@@ -1,5 +1,6 @@
 package controller;
 
+import model.JCell;
 import model.JUniverse;
 
 /**
@@ -14,8 +15,15 @@ public class JGameController {
     public void liveOneDay(){
         if (!isGame) return;
 
+        for (JCell cel: curUniverse.getUniverseField().values()) {
+            checkCell(cel);
+        }
 
         if(checkGameOver()) isGame = false;
+    }
+
+    public void checkCell(JCell cel){
+
     }
 
     public boolean checkGameOver(){
