@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class JUniverse {
 
-    public static final int NUMBER_AROUND = 8;
+    private static final int NUMBER_AROUND = 8;
 
     private JCell[][] universeField;
     private int universeSize;
@@ -31,7 +31,7 @@ public class JUniverse {
         universeField[2][2].inverseLive();
         universeField[2][3].inverseLive();
         universeField[2][4].inverseLive();
-        
+
         universeField[5][6].inverseLive();
         universeField[6][6].inverseLive();
         universeField[7][6].inverseLive();
@@ -57,7 +57,7 @@ public class JUniverse {
         return bak;
     }
 
-    public int getCoordField(int x){
+    private int getCoordField(int x){
         if(x < 0) return universeSize + x;
         else if (x < universeSize) return x;
         else return x - universeSize;
