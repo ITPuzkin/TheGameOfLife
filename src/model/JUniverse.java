@@ -7,22 +7,58 @@ import java.util.HashMap;
  */
 public class JUniverse {
 
-    private HashMap<int[],JCell> universeField;
+    public static final int NUMBER_AROUND = 8;
+
+    private JCell[][] universeField;
+    private int universeSize;
 
     public JUniverse(int size){
-        universeField = new HashMap<>(size*size);
+        universeSize = size;
+        universeField = new JCell[size][size];
         for(int i=0;i<size;i++){
             for(int j=0;j<size;j++) {
                 int bak[] = {i,j};
-                universeField.put(bak, new JCell());
+                universeField[i][j] = new JCell(bak);
             }
         }
     }
 
-    public HashMap<int[],JCell> getArroundCells(int[] coord){
-        HashMap<int[],JCell> around = new HashMap<>(8);
-
+    public void setUniverseField(JCell[][] un){
+        universeField = un;
     }
 
-    public HashMap<int[],JCell> getUniverseField(){return universeField;}
+    public void initRandom(){
+        universeField[2][2].inverseLive();
+        universeField[2][3].inverseLive();
+        universeField[2][4].inverseLive();
+        universeField[1][4].inverseLive();
+        universeField[0][3].inverseLive();
+    }
+
+    public JCell getCell(int[] coord){
+        return universeField[coord[0]][coord[1]];
+    }
+
+    public int getUniverseSize(){return universeSize;}
+
+    public JCell[] getArroundCells(JCell cel){
+        JCell[] bak = new JCell[NUMBER_AROUND];
+        bak[0] = getCell(new int[] {getCoordField(cel.getX()-1),getCoordField(cel.getY()-1)});
+        bak[1] = getCell(new int[] {getCoordField(cel.getX()-1),getCoordField(cel.getY()+1)});
+        bak[2] = getCell(new int[] {getCoordField(cel.getX()-1),getCoordField(cel.getY())});
+        bak[3] = getCell(new int[] {getCoordField(cel.getX()+1),getCoordField(cel.getY()-1)});
+        bak[4] = getCell(new int[] {getCoordField(cel.getX()+1),getCoordField(cel.getY()+1)});
+        bak[5] = getCell(new int[] {getCoordField(cel.getX()+1),getCoordField(cel.getY())});
+        bak[6] = getCell(new int[] {getCoordField(cel.getX()),getCoordField(cel.getY()+1)});
+        bak[7] = getCell(new int[] {getCoordField(cel.getX()),getCoordField(cel.getY()-1)});
+        return bak;
+    }
+
+    public int getCoordField(int x){
+        if(x < 0) return universeSize + x;
+        else if (x < universeSize) return x;
+        else return x - universeSize;
+    }
+
+    public JCell[][] getUniverseField(){return universeField;}
 }
