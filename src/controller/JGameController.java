@@ -20,12 +20,14 @@ public class JGameController {
         curUniverse.initRandom();
     }
 
+    public boolean getIsGame(){return isGame;}
+
     public JUniverse getCurUniverse(){return curUniverse;}
 
     public JUniverse liveOneDay(){
         JUniverse bak = new JUniverse(curUniverse.getUniverseSize());
 
-        if (!isGame) return null;
+        if (!isGame) {System.out.print("\n==========GAME OVER===============");return null;}
 
         for (JCell[] mcel: curUniverse.getUniverseField()) {
             for(JCell cel: mcel){

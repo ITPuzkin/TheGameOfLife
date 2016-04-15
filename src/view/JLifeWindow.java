@@ -21,7 +21,7 @@ public class JLifeWindow extends JFrame implements ActionListener {
         super("Life");
         setBounds(100,100,740,580);
 
-        game = new JGameController(10);
+        game = new JGameController(20);
 
         button1 = new JButton("1 day");
         button1.addActionListener(this);
@@ -50,7 +50,7 @@ public class JLifeWindow extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        printField(game.getCurUniverse());
+        if(game.getIsGame()) printField(game.getCurUniverse());
         game.liveOneDay();
     }
 }

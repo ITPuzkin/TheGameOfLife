@@ -31,6 +31,8 @@ public class JUniverse {
         universeField[2][2].inverseLive();
         universeField[2][3].inverseLive();
         universeField[2][4].inverseLive();
+        universeField[4][4].inverseLive();
+        universeField[2][5].inverseLive();
         universeField[1][4].inverseLive();
         universeField[0][3].inverseLive();
     }
